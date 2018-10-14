@@ -2,6 +2,9 @@ FROM openjdk:8-jdk-alpine
 LABEL author="Serge NOEL <serge.noel@net6a.com>" \
       Description="This is a base image, which provides the Jenkins agent executable"
 
+RUN mkdir /usr/share/jenkins
+WORKDIR /usr/share/jenkins
+RUN wget http://mirrors.jenkins.io/war-stable/latest/jenkins.war
 RUN addgroup -g 1000 jenkins
 RUN adduser -h /var/jenkins_home -u 1000 -G jenkins -D jenkins
 
