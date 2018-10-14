@@ -1,0 +1,1 @@
+#Slave for jenkins docker

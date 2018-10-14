@@ -1,0 +1,19 @@
+#!/bin/sh
+clear
+echo "*********************************"
+echo "* We need to get back slave.jar *"
+echo "*********************************"
+echo -n "fdqn of your jenkins installation : "
+read URL
+
+FILE="http://$URL/jnlpJars/slave.jar"
+echo "Votre URL : $FILE"
+curl -L -o slave.jar $FILE
+
+echo ""
+echo "Docker php ?"
+cp slave.jar Php/slave.jar
+cd Php
+docker build -t easylinux/jenkins-slave:php .
+cd ..
+
